@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B1ACFED4-3189-3377-5AF9-B7264255566A" containerWithKeyObject="A8A3F659-2669-5745-75AE-A207333DB6B9" localFKIndex="6D8711B8-5083-8D54-36ED-1B90BADA123D" name="FK_CTYPEEQUIPEMENT">
+<sourceConnName>zeta2</sourceConnName>
+<sourceObjSchema>HG191064</sourceObjSchema>
+<sourceObjName>FK_CTYPEEQUIPEMENT</sourceObjName>
+<createdBy>macbook</createdBy>
+<createdTime>2019-10-03 18:46:47 UTC</createdTime>
+<ownerDesignName>bhhh</ownerDesignName>
+<referredTableLongName>HG191064.TYPEEQUIPEMENT</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<mandatory>false</mandatory>
+<refColNames>CTYPEEQUIPEMENT</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

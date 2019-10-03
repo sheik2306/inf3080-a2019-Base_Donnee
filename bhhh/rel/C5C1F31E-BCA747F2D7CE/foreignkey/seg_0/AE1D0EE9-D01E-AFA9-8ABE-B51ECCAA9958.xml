@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AE1D0EE9-D01E-AFA9-8ABE-B51ECCAA9958" containerWithKeyObject="29315254-AF50-2019-EE39-0C11CA4FE443" localFKIndex="976A27F6-85BE-3FB5-987C-2846AAF5938E" name="FK_CPOSITION">
+<sourceConnName>zeta2</sourceConnName>
+<sourceObjSchema>HG191064</sourceObjSchema>
+<sourceObjName>FK_CPOSITION</sourceObjName>
+<createdBy>macbook</createdBy>
+<createdTime>2019-10-03 18:46:41 UTC</createdTime>
+<ownerDesignName>bhhh</ownerDesignName>
+<referredTableLongName>HG191064.TOSITION</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<mandatory>true</mandatory>
+<refColNames>CPOSITION</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

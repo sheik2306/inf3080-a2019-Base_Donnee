@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AB977E79-C426-D223-BB73-13A1571A9B70" containerWithKeyObject="29315254-AF50-2019-EE39-0C11CA4FE443" localFKIndex="CD57EBB6-AFE9-28F2-81ED-56EC7641904C" name="FK_REMORQUE_ID">
+<sourceConnName>zeta2</sourceConnName>
+<sourceObjSchema>HG191064</sourceObjSchema>
+<sourceObjName>FK_REMORQUE_ID</sourceObjName>
+<createdBy>macbook</createdBy>
+<createdTime>2019-10-03 18:46:41 UTC</createdTime>
+<ownerDesignName>bhhh</ownerDesignName>
+<referredTableLongName>HG191064.REMORQUE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A8A3F659-2669-5745-75AE-A207333DB6B9</referredTableID>
+<keyObject>FCAAA46E-67F8-B62A-64DE-BD3A866681C9</keyObject>
+<referredKeyID>FCAAA46E-67F8-B62A-64DE-BD3A866681C9</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>REMORQUE_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
