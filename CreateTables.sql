@@ -13,8 +13,9 @@ cTypeEquipement varchar(30),
 CONSTRAINT pk_cTypeEquipement PRIMARY KEY(cTypeEquipement)
 );/
 
+
 CREATE TABLE Remorque (
-remorque_id NUMBER(3) NOT NULL,
+remorque_id number(3) NOT NULL,
 capacite NUMBER(38) NOT NULL,
 longueur NUMBER(38) NOT NULL,
 largeur NUMBER(38) NOT NULL,
@@ -23,6 +24,11 @@ cTypeEquipement varchar(30),
 CONSTRAINT pk_remorque_id PRIMARY KEY (remorque_id),
 CONSTRAINT fk_cTypeEquipement FOREIGN KEY (cTypeEquipement) REFERENCES TypeEquipement(cTypeEquipement)
 );/
+ CREATE SEQUENCE seq_id_remorque
+ minvalue 0
+ increment by 1
+ start with 0;
+
 
 CREATE TABLE Position (
 cPosition varchar(30) NOT NULL,
