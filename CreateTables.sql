@@ -24,10 +24,7 @@ cTypeEquipement varchar(30),
 CONSTRAINT pk_remorque_id PRIMARY KEY (remorque_id),
 CONSTRAINT fk_cTypeEquipement FOREIGN KEY (cTypeEquipement) REFERENCES TypeEquipement(cTypeEquipement)
 );/
- CREATE SEQUENCE seq_id_remorque
- minvalue 0
- increment by 1
- start with 0;
+
 
 
 CREATE TABLE Position (
@@ -48,6 +45,9 @@ CONSTRAINT fk_cPosition FOREIGN KEY (cPosition) REFERENCES Position(cPosition),
 CONSTRAINT fk_remorque_id FOREIGN KEY (remorque_id) REFERENCES Remorque(remorque_id)
 );/
 
+ALTER TABLE Position ADD camion_id NUMBER(38) NOT NULL;
+ALTER TABLE Position ADD CONSTRAINT fk_camion_id FOREIGN KEY (camion_id) REFERENCES Camion(camion_id);
+
 CREATE TABLE Transporteur (
 nomTransporteur varchar(30) NOT NULL,
 camion_id NUMBER (38) NOT NULL,
@@ -64,6 +64,8 @@ CONSTRAINT pk_noClient PRIMARY KEY (noClient)
 );
 
 CREATE TABLE Soumission (
-dateSoumission DATE
+dateSoumission DATE,
+prix NUMBER(8,5)
+
 );
 
