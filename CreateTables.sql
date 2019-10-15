@@ -52,19 +52,6 @@ CONSTRAINT fk_camion_id FOREIGN KEY (camion_id) REFERENCES Camion(camion_id),
 CHECK (bDisponible BETWEEN 0 and 1 ) -- 0 false, 1 true
 );/
 
-
-CREATE TABLE Compagnie ( -- La compagnie a les camions
-noCompagnie NUMBER(3) NOT NULL,
-position_id NUMBER(3) NOT NULL,
-nomCompagnie varchar(30) NOT NULL,
-noClient NUMBER(3) NOT NULL,
-
-CONSTRAINT pk_noCompagnie PRIMARY KEY (noCompagnie),
-CONSTRAINT fk_position_id FOREIGN KEY (position_id) REFERENCES Position(position_id),
-CONSTRAINT fk_no_client FOREIGN KEY (noClient) REFERENCES Position(noClient)
--- CONSTRIANT fk_noVoyage FOREIGN KEY (noVoyage) REFERENCES Chargement(noVoyage)
-);
-
 CREATE TABLE Chargement (
 noChargement NUMBER(3) NOT NULL,
 route_id NUMBER(3) NOT NULL,
@@ -76,6 +63,7 @@ CONSTRAINT pk_noChargement PRIMARY KEY (noChargement),
 CONSTRAINT fk_cRoute FOREIGN KEY (route_id) REFERENCES Route(route_id)
 );
 
+
 CREATE TABLE Soumission (
 noSoumission NUMBER (3) NOT NULL,
 noChargement NUMBER(3) NOT NULL,
@@ -85,7 +73,6 @@ CONSTRAINT pk_noSoumission PRIMARY KEY (noSoumission),
 CONSTRAINT fk_noChargement FOREIGN KEY (noChargement) REFERENCES Chargement(noChargement)
 );
 
-
 CREATE TABLE Client (
 noClient NUMBER (3) NOT NULL,
 noSoumission NUMBER (3) NOT NULL,
@@ -93,6 +80,22 @@ noSoumission NUMBER (3) NOT NULL,
 CONSTRAINT pk_noClient PRIMARY KEY (noClient),
 CONSTRAINT fk_noSoumission FOREIGN KEY (noSoumission) REFERENCES Soumission(noSoumission)
 );
+
+CREATE TABLE Compagnie ( -- La compagnie a les camions
+noCompagnie NUMBER(3) NOT NULL,
+position_id NUMBER(3) NOT NULL,
+nomCompagnie varchar(30) NOT NULL,
+noClient NUMBER(3) NOT NULL,
+
+CONSTRAINT pk_noCompagnie PRIMARY KEY (noCompagnie),
+CONSTRAINT fk_position_id FOREIGN KEY (position_id) REFERENCES Position(position_id),
+CONSTRAINT fk_no_client FOREIGN KEY (noClient) REFERENCES Client(noClient)
+-- CONSTRIANT fk_noVoyage FOREIGN KEY (noVoyage) REFERENCES Chargement(noVoyage)
+);
+
+
+
+
 
 
 
