@@ -1,0 +1,1 @@
+    SELECT LOWER(table_name) FROM user_tables order by table_name DESC;

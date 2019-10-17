@@ -12,6 +12,9 @@ Values(1,'Transport Ti-guy','555-423-6789','25 Rue de Lorne, saint-sophie');
 ---------------- CLIENT -----------
 
 INSERT INTO Client
+Values(4,'ManufacturierSoulier','514-654-6647','445 Rue Lagace, VictoraiVille');
+
+INSERT INTO Client
 Values(10,'VendeurLeger','514-654-6647','2244 boulevard pie-x Montreal');
 
 INSERT INTO Client
@@ -165,6 +168,10 @@ Values(5,40,4,'17-12-18',2600.50,1.45,1);
 
 INSERT INTO Soumission 
 Values(6,40,1,'25-09-19',5600.50,2.01,3);
+
+INSERT INTO Soumission 
+Values(7,4,1,'2019-09-30',5600.50,1.91,1);
+   
 
 
 

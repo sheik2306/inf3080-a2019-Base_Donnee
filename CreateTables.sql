@@ -103,33 +103,33 @@ CONSTRAINT fk_pRoute FOREIGN KEY (pRoute) REFERENCES Route(pRoute)
 
 
 CREATE TABLE Client (
-noClient NUMBER (3) NOT NULL,
+pClient NUMBER (3) NOT NULL,
 nom varchar(30) NOT NULL,
 telephone varchar(30) NOT NULL,
 addresse varchar(60) NOT NULL,
---noSoumission NUMBER (3) NOT NULL,
- -- Donneur de Voyage /Chargement
-CONSTRAINT pk_noClient PRIMARY KEY (noClient)
---CONSTRAINT fk_noSoumission FOREIGN KEY (noSoumission) REFERENCES Soumission(noSoumission)
+
+
+CONSTRAINT pk_pClient PRIMARY KEY (pClient)
 );
 
 
 
 CREATE TABLE Soumission (
 noSoumission NUMBER (3) NOT NULL, -- PK
-noClient NUMBER (3) not null, -- fk
+pClient NUMBER (3) not null, -- fk
 pChargement NUMBER(3) NOT NULL, -- FK
 dateSoumission DATE NOT NULL,
 prixRoute NUMBER(8,2) NOT NULL, -- Canadien
 prixCarbu NUMBER(8,2) NOT NULL, -- $/L
 camion_id NUMBER (3) NOT NULL, --fk
 
-CONSTRAINT pk_noSoumission PRIMARY KEY (noSoumission),
 
+
+CONSTRAINT pk_noSoumission PRIMARY KEY (noSoumission),
 
 CONSTRAINT fk_pChargement FOREIGN KEY (pChargement) REFERENCES Chargement(pChargement),
 CONSTRAINT fk_camionid FOREIGN KEY (camion_id) REFERENCES Camion(camion_id),
-CONSTRAINT fk_noClient FOREIGN KEY (noClient) REFERENCES Client(noClient)
+CONSTRAINT fk_pClient FOREIGN KEY (pClient) REFERENCES Client(pClient)
 
 );
 
