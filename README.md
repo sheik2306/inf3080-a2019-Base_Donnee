@@ -4,13 +4,13 @@
 
    <description du projet en quelques phrases>
    
-   * cours, 
-   * sigle, 
-   * université,
+   * BASE DE DONNEE
+   * INF3080 gr. 031 Automne 2019
+   * UQAM
 
    ## Auteur
 
-   Dufour-Couture,Alex
+   Dufour-Couture,Alex 
    `DUFA23059001`
 
    ## Fonctionnement
@@ -21,13 +21,19 @@
    A L'aide de SQL developer ouvrir les fichiers .sql,
    sinon par le terminal /\*.sql afin de partir le fichier.
 
-   1. Commencer par lancer le ficher `01_schema.sql` avec F5 (Run script).
-   2. Ensuite lancer le ficher `02_charger.sql` avec F5 (Run script).
-   3. Ensuite vous pourrez commencer avec vos requetes 
-   	* `4a,4b,4c,4d, ect.`
-   4. Si pour X raison vous avez besoin de recommencer la creation, executer le script `dropTables.sql`
-   <expliquez brièvement comment faire fonctionner votre projet, en inscrivant
-   au moins deux exemples d'utilisation (commande lancée et résultat affiché)>
+   1. Commencer par lancer le ficher `01_schema.sql` avec F5 (Run script).  
+   Affichera des `Table * created.` <br>
+   2. Ensuite lancer le ficher `02_charger.sql` avec F5 (Run script).  
+   Affichera plusiers `1 row inserted`.<br>
+   3. Ensuite vous pourrez commencer avec les requetes `4a,4b,4c,4d, ect.`
+| client.pclient|nom|telephone|addresse|nosoumission|pchargement|datesoumission|prixroute|prixcarbu|camion_id|
+|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+|4	|ManufacturierSoulier|	514-654-6647	|445 Rue Lagace, VictoraiVille	|7	|1	|19-09-30	|5600.5|	1.91|	1|
+
+
+
+   4. Si pour X raison vous avez besoin de recommencer la creation de table, executer le script `dropTables.sql`
+
 
 
    ## Contenu du projet

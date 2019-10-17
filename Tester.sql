@@ -69,5 +69,6 @@ WHERE
     
     SELECT * FROM user_tab_columns WHERE Table_Name='CAMION';
 
+ SELECT * FROM user_tab_columns WHERE Table_Name='SOUMISSION';
 
     
