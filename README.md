@@ -8,12 +8,12 @@
    * INF3080 gr. 031 Automne 2019
    * UQAM
 
-   ## Auteur
+## Auteur
 
-   Dufour-Couture,Alex 
+   Dufour-Couture,Alex <br>
    `DUFA23059001`
 
-   ## Fonctionnement
+## Fonctionnement
 
    Faire git clone "mon lien https du projet"
    ensuite se connecter sur Zeta2.
@@ -47,7 +47,7 @@
    4. Si pour X raison vous avez besoin de recommencer la creation de table, executer le script `dropTables.sql`
 
 
-   ## Contenu du projet
+## Contenu du projet
 
  
 `00_modele.pdf` Contient le dessin UML 
@@ -64,20 +64,22 @@
 
 `04c_query.sql` Contient une requête qui retourne le nom des tables en minuscule de mon schéma en ordre décroissant 
 
-`04d_query.sql` Contient une requête qui retourne les attributs des entités E = { Tracteur, Camion, Equipement }; 
+`04d_query.sql` Contient une requête qui retourne les attributs des entités E = { Tracteur, Camion, Equipement }
 
 `05_algebre-tp1.pdf` Contient les reponses a `04a_query.sql` et `04b_query.sql` en Algebre relationelle 
 
 
-   ## Références
+## Références
 
-   <citez vos sources ici>
+   SQL pour Oracle par `Christian Soutou`<br>
+   Systeme de gestion de bases de donnees par exemple par `Robert Godin`
 
-   ## Statut
 
-   <indiquez si le projet est complété ou s'il y a des bogues>
+## Statut
+
+  Le projet est complet
    
-   ## Auto-évaluation de votre travail
+## Auto-évaluation de votre travail
    
-   <j'évalue mon livrable à x points>
+   J'évalue mon livrable à 12 points
 
