@@ -1,6 +1,4 @@
 
-
-
 CREATE TABLE Route (
 pRoute NUMBER(3) NOT NULL,
 cRoute varchar(30) NOT NULL,
@@ -8,7 +6,7 @@ nLatOri NUMBER(8,5) NOT NULL,
 nLongOri NUMBER (8,5) NOT NULL,
 nLatDes NUMBER(8,5) NOT NULL,
 nLongDes NUMBER (8,5) NOT NULL,
-nDistance NUMBER(38) NOT NULL,
+nDistance NUMBER(38) NOT NULL CHECK (nDistance > 0 ),
 
 CONSTRAINT pk_Route PRIMARY KEY (pRoute)
 );/
@@ -52,9 +50,7 @@ addresse varchar(60) NOT NULL,
 --camion_id NUMBER (3) NOT NULL,
 
 CONSTRAINT pk_noCompagnie PRIMARY KEY (noCompagnie)
---CONSTRAINT fkC_camion_id FOREIGN KEY (camion_id) REFERENCES Camion(camion_id)
 
--- CONSTRIANT fk_noVoyage FOREIGN KEY (noVoyage) REFERENCES Chargement(noVoyage)
 );
 
 
@@ -123,10 +119,7 @@ prixRoute NUMBER(8,2) NOT NULL, -- Canadien
 prixCarbu NUMBER(8,2) NOT NULL, -- $/L
 camion_id NUMBER (3) NOT NULL, --fk
 
-
-
 CONSTRAINT pk_noSoumission PRIMARY KEY (noSoumission),
-
 CONSTRAINT fk_pChargement FOREIGN KEY (pChargement) REFERENCES Chargement(pChargement),
 CONSTRAINT fk_camionid FOREIGN KEY (camion_id) REFERENCES Camion(camion_id),
 CONSTRAINT fk_pClient FOREIGN KEY (pClient) REFERENCES Client(pClient)

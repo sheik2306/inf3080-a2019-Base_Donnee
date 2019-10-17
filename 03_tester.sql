@@ -65,10 +65,27 @@ WHERE
     f.ptypeequipement = g.ptypeequipement; 
     
     
+    ---------------- camion -> position -----------
+SELECT
+    p.camion_id,
+    p.nocompagnie,
+    p.pequipement,
+    p.ptracteur,
+    q.pposition,
+    q.cposition,
+    q.nlat,
+    q.nlong,
+    q.bdisponible
+FROM
+    position   q,
+    camion     p
+WHERE
+    p.camion_id = q.camion_id;
+
    -- SELECT table_name FROM all_tables WHERE owner='HG191064';
     
-    SELECT * FROM user_tab_columns WHERE Table_Name='CAMION';
+--SELECT * FROM user_tab_columns WHERE Table_Name='CAMION';
 
- SELECT * FROM user_tab_columns WHERE Table_Name='SOUMISSION';
+ --SELECT * FROM user_tab_columns WHERE Table_Name='SOUMISSION';
 
     
