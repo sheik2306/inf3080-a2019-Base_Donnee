@@ -51,14 +51,23 @@
 
  
 `00_modele.pdf` Contient le dessin UML 
+
 `01_schema.sql` Contient le script de creation des tables en langage SQL 
+
 `02_charger.sql` Contient le script d'insertion des tables en langage SQL 
+
 `03_tester.sql` Contient des requetes tests afin de tester la BD.
+
 `04a_query.sql` Contient une requete DDL qui retourne les soumissions ceux datées du 2019-09-30 pour le pClient { 4 } 
+
 `04b_query.sql` Contient une requête qui liste les camions qui sont présentement en voyage 
+
 `04c_query.sql` Contient une requête qui retourne le nom des tables en minuscule de mon schéma en ordre décroissant 
+
 `04d_query.sql` Contient une requête qui retourne les attributs des entités E = { Tracteur, Camion, Equipement }; 
+
 `05_algebre-tp1.pdf` Contient les reponses a `04a_query.sql` et `04b_query.sql` en Algebre relationelle 
+
 
    ## Références
 
