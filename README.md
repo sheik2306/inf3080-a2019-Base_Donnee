@@ -1,85 +1,67 @@
-# Travail pratique 1
+# Travail pratique 3
 
-   ## Description
-
-   <description du projet en quelques phrases>
+## Description
    
-   * BASE DE DONNEE
-   * INF3080 gr. 031 Automne 2019
+   * Outils et pratiques de développement logiciel
+   * INF2050 gr. 030 Automne 2019
    * UQAM
+
+   Document sur la norme de codification acceptée. 
 
 ## Auteur
 
-   Dufour-Couture,Alex <br>
-   `DUFA23059001`
+   Dufour-Couture, Alex `DUFA23059001`
 
-## Fonctionnement
+   Sid Mohand, Riad `SIDR21089806`
 
-   Faire git clone "mon lien https du projet"
-   ensuite se connecter sur Zeta2.
+   Marion, Tommy `MART03109706`
 
+   Bernier, Louis `BERL23079106`
 
-   A L'aide de SQL developer ouvrir les fichiers .sql,
-   sinon par le terminal /\*.sql afin de partir le fichier.
+## Style
 
-   1. Commencer par lancer le ficher `01_schema.sql` avec F5 (Run script).  
-   Affichera des `Table * created.` <br>
-   2. Ensuite lancer le ficher `02_charger.sql` avec F5 (Run script).  
-   Affichera plusiers `1 row inserted`.<br>
-   3. Ensuite vous pourrez commencer avec les requetes `4a,4b,4c,4d, ect.` avec F5.
+Notre équipe a décidé de suivre la convention Java établie par Oracle en 1997 (qui n'a pas été mis à jour depuis). `Voir ci-bas le document en référence`
+  
 
-* `04a_query` Affichera:
-
-| client.pclient|nom|telephone|addresse|nosoumission|pchargement|datesoumission|prixroute|prixcarbu|camion_id|
-|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-|4	|ManufacturierSoulier|	514-654-6647	|445 Rue Lagace, VictoraiVille	|7	|1	|19-09-30	|5600.5|	1.91|	1|
+### Voici un resume de nos conventions:
+<hr>
 
 
-* `04b_query` Affichera: 
+**Nomenclature**
 
 
-|camion.camion_id|nocompagnie|pequipement|ptracteur|pposition|cposition|nlat|nlong|bdisponible|
-|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-|2	|1	|2	|2	|2	|Voyage	|65.3666|-82.44455|	0|
-|4	|1	|4	|4	|4	|Voyage2|55.3666|-72.44455|	0|
+| Type|Nommage|Langue|
+|:----:|:--------------------------------------------------------------:|:----:|
+|Classe	|Nom avec la première lettre en majuscule.| FR	|
+|Méthodes|Commence par des verbes conjugés, camelCase| FR	|
+|Variables| Court et significatif, camelCase| FR	|
+|Constantes| Le mot au complet en majuscule, séparer les mots par un _underscore_ << _ >>| FR |
 
 
-   4. Si pour X raison vous avez besoin de recommencer la creation de table, executer le script `dropTables.sql`
+**Lisibilité**
+
+* Un bloc de commentaire sous ce format sera utilisé:
 
 
-## Contenu du projet
+```java
+/*
+ * Ceci est un commentaire en bloc.
+ */
+```
 
- 
-`00_modele.pdf` Contient le dessin UML 
+* Les lignes ne seront pas plus que 80 caractère et si nous devons séparer les expressions trop longues les critères sont:
+	1. Couper après une virgule
+	2. Couper avant un opérateur
+	3. Coupure de haut niveau
 
-`01_schema.sql` Contient le script de creation des tables en langage SQL 
 
-`02_charger.sql` Contient le script d'insertion des tables en langage SQL 
+* Une unité d'indentation est de 4 espaces et une tablulation est de 8 espaces.
 
-`03_tester.sql` Contient des requetes tests afin de tester la BD.
-
-`04a_query.sql` Contient une requete DDL qui retourne les soumissions ceux datées du 2019-09-30 pour le pClient { 4 } 
-
-`04b_query.sql` Contient une requête qui liste les camions qui sont présentement en voyage 
-
-`04c_query.sql` Contient une requête qui retourne le nom des tables en minuscule de mon schéma en ordre décroissant 
-
-`04d_query.sql` Contient une requête qui retourne les attributs des entités E = { Tracteur, Camion, Equipement }
-
-`05_algebre-tp1.pdf` Contient les reponses a `04a_query.sql` et `04b_query.sql` en Algebre relationelle 
+* Se référer au document pour de plus amples normes
 
 
 ## Références
 
-   SQL pour Oracle par `Christian Soutou`<br>
-   Systeme de gestion de bases de donnees par exemple par `Robert Godin`
+  Document en reference: https://www.oracle.com/technetwork/java/codeconventions-150003.pdf
 
-
-## Statut
-
-  Le projet est complet
-   
-## Auto-évaluation de votre travail
-   
-   J'évalue mon livrable à 12 points
 

@@ -1,0 +1,79 @@
+
+
+--- TEST TYPE EQUIPEMENT ET TRIGGER 'COUT'  / Nombre de camion --
+
+UPDATE TYPEEQUIPEMENT
+SET TYPEEQUIPEMENT.ncout = 50.5
+WHERE TYPEEQUIPEMENT.CTYPEEQUIPEMENT = 'Flatbed';
+
+UPDATE TYPEEQUIPEMENT
+SET TYPEEQUIPEMENT.ncout = 50.5
+WHERE TYPEEQUIPEMENT.CTYPEEQUIPEMENT = 'Drybox';
+
+INSERT INTO SoumissionD 
+Values(16,40,66770.24); -- ERREUR--
+
+UPDATE TYPEEQUIPEMENT
+SET TYPEEQUIPEMENT.ncout = 60.5
+WHERE TYPEEQUIPEMENT.CTYPEEQUIPEMENT = 'Drybox';
+
+INSERT INTO SoumissionD 
+Values(16,40,66770.24); --INSERT-- Nombre de camion -1
+
+
+
+
+
+--TEST TRIGGER 'DISTANCE' INTO CHARGEMENT --
+
+-- EN BAS DE 50KM = INSERT ---
+INSERT INTO Chargement
+Values(7,'Boite de tasses',65.7,-75.9,64.10,-77.13,40,73,150,200,300,1);
+
+-- EN HAUT DE 50KM = ERREUR --
+
+INSERT INTO ROUTE
+Values(11,'Quebec vers Kingston',67.3,-88.4,49.3,-88.4,400); -- 400 km --
+
+INSERT INTO Chargement
+Values(10,'Boite de tasses',67.3,-88.4,49.3,-88.4,40,73,150,200,300,1); -- Meme coordonee que la route 11 -- ( 400km)
+
+
+
+
+
+--TEST TRIGGER 'TRAJET' INTO CHARGEMENT --
+
+-- Ne correspond pas a des coordonnees d'une ROUTE = ERREUR --
+INSERT INTO Chargement
+Values(8,'Boite de tasses',54.3,-79.4,41.3,-78.2,40,73,150,200,300,1);
+
+-- CORRESPOND a des coordonnees d'une ROUTE  = INSERT --
+INSERT INTO Chargement
+Values(10,'Boite de tasses',65.7,-75.9,64.10,-77.13,40,73,150,200,300,1);
+/
+
+
+--Test produire facture --
+SET ECHO ON
+SET SERVEROUTPUT ON
+execute produirefacture(13,30,'Master Card');
+
+--Test produire facture (Deux fois la meme soumission et client = erreur ) --
+execute produirefacture(14,30,'VISA');
+
+--Test produire mauvais paiement --
+SET ECHO ON
+SET SERVEROUTPUT ON
+execute produirefacture(13,30,'Mwdd');
+
+
+
+--Test consulter Soumissions --
+SET ECHO ON
+SET SERVEROUTPUT ON
+execute ConsulterSoumissions;
+/
+
+
+

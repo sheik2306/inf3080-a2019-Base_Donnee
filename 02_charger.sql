@@ -1,10 +1,10 @@
-
+SET ECHO ON
+SET SERVEROUTPUT ON
 
 ---------------- COMPAGNIE -----------
 
 INSERT INTO Compagnie
-Values(1,'Transport Ti-guy','555-423-6789','25 Rue de Lorne, saint-sophie');
-
+Values(1,'Transport Ti-guy','555-423-6789','25 Rue de Lorne, saint-sophie',12450,80);
 
 
 
@@ -31,11 +31,14 @@ Values(40,'VendeurExtreme','514-664-6667','144 rue Antoine Montreal');
 ---------------- TYPE EQUIPEMENT -----------
 
 
-INSERT INTO  TYPEEQUIPEMENT 
-VALUES(0,'Flatbed',20.50);  -- Initier une fois seulement
 
 INSERT INTO TYPEEQUIPEMENT 
 VALUES(1,'Drybox',30.50);   -- Unique
+
+INSERT INTO TYPEEQUIPEMENT 
+VALUES(2,'Flatbed',40.50);   -- Unique
+
+
 
 
 
@@ -45,33 +48,50 @@ VALUES(1,'Drybox',30.50);   -- Unique
 ---------------- EQUIPEMENT -----------
 
 INSERT INTO EQUIPEMENT 
-Values(1,0,10,30,40,30); -- doit etre Flatbed ou  Drybox seulement
+Values(1,'52 pied',1,300,40,50,52);
 
 INSERT INTO EQUIPEMENT 
-Values(2,0,25,300,45,60); -- doit etre Flatbed ou  Drybox seulement
+Values(2,'48 pied',1,400,40,50,48);
 
 INSERT INTO EQUIPEMENT 
-Values(3,1,25,300,45,60); -- doit etre Flatbed ou  Drybox seulement
+Values(3,'60 pied',1,500,40,50,60);
 
 INSERT INTO EQUIPEMENT 
-Values(4,1,45,750,450,604); -- doit etre Flatbed ou  Drybox seulement
+Values(4,'40 pied',2,200,40,50,40);
 
 
+---------------- CARBURANT -----------
+INSERT INTO Carburant
+Values(1,'Diesel',1.5);
 
+INSERT INTO Carburant
+Values(2,'Propane',1.4);
 
+INSERT INTO Carburant
+Values(3,'Gaz',1.75);
+
+INSERT INTO Carburant
+Values(4,'Normal',1.25);
+
+INSERT INTO Carburant
+Values(5,'Super',2.25);
 
 ---------------- TRACTEUR -----------
 INSERT INTO Tracteur
-Values(1,0); 
+Values(1,1,35,0); 
 
 INSERT INTO Tracteur
-Values(2,1); 
+Values(2,2,30,1); 
 
 INSERT INTO Tracteur
-Values(3,0); 
+Values(3,3,45,0); 
 
 INSERT INTO Tracteur
-Values(4,1); 
+Values(4,4,25,0); 
+
+INSERT INTO Tracteur
+Values(5,5,25,0); 
+
 
 
 
@@ -112,19 +132,25 @@ Values(4,'Voyage2', 55.3666, -72.44455,0,4);
 
 
 INSERT INTO ROUTE
-Values(1,'Montreal vers Quebec',65.3666,-75.444,64.3666,-77.444,200);
+Values(1,'Montreal vers Quebec',65.7,-75.9,64.10,-77.13,22);
 
 INSERT INTO ROUTE
-Values(2,'Montreal vers Sherbrooke',65.3666,-75.444,64.3666,-77.444,300);
+Values(2,'Montreal vers Sherbrooke',65.3666,-75.444,64.3666,-77.444,30);
 
 INSERT INTO ROUTE
-Values(3,'Montreal vers Rimouski',65.3666,-75.444,64.3666,-77.444,400);
+Values(3,'Montreal vers Rimouski',65.3666,-75.444,64.3666,-77.444,45);
 
 INSERT INTO ROUTE
-Values(4,'Montreal vers Plattsburg',65.3666,-75.444,64.3666,-77.444,500);
+Values(4,'Montreal vers Plattsburg',65.3666,-75.444,64.3666,-77.444,49);
 
+INSERT INTO ROUTE
+Values(5,'Quebec vers Montreal',67.3,-79.4,41.3,-78.2,30);
 
+INSERT INTO ROUTE
+Values(6,'Quebec vers Montreal',65.3,-75.4,44.3,-78.4,40);
 
+INSERT INTO ROUTE
+Values(7,'Quebec vers Ottawa',64.3,-85.4,44.3,-98.4,42);
 
 
 
@@ -134,51 +160,78 @@ Values(4,'Montreal vers Plattsburg',65.3666,-75.444,64.3666,-77.444,500);
 
 
 INSERT INTO Chargement
-Values(1,1,455,200,200,200,1);
+Values(1,'Une boite',65.3666,-75.444,64.3666,-77.444,10,73,200,200,300,1);
 
 INSERT INTO Chargement
-Values(2,2,455,200,200,200,1);
+Values(2,'Boite de livre',65.3,-75.4,44.3,-78.4,20,50,250,100,300,1);
 
 INSERT INTO Chargement
-Values(3,3,455,300,200,200,3);
+Values(3,'Boite de tuque',65.3,-75.4,44.3,-78.4,20,33,200,200,300,1);
 
 INSERT INTO Chargement
-Values(4,4,455,400,200,300,5);
+Values(4,'Boite de chapeau',65.3,-75.4,44.3,-78.4,30,33,100,200,300,1);
+
+INSERT INTO Chargement
+Values(5,'Boite de tasses',65.3,-75.4,44.3,-78.4,40,73,150,200,300,1);
+
+INSERT INTO Chargement
+Values(6,'Boite de tasses',65.3,-75.4,44.3,-78.4,40,73,150,200,300,1);
 
 
 
+INSERT INTO Chargement
+Values(8,'Boite de tasses',64.3,-85.4,44.3,-98.4,40,90,150,200,300,1);
 
 
 
----------------- SOUMISSION -----------
-INSERT INTO Soumission 
-Values(1,10,2,'18-10-19',2600.50,1.36,1);
+---------------- SOUMISSION E -----------
+INSERT INTO SoumissionE 
+Values(10,2,'18-10-19');
 
-INSERT INTO Soumission 
-Values(2,10,2,'17-08-18',3600.50,1.34,1);
+INSERT INTO SoumissionE 
+Values(20,4,'17-08-18');
 
-INSERT INTO Soumission 
-Values(3,20,3,'05-05-19',4600.50,1.55,3);
+INSERT INTO SoumissionE 
+Values(21,1,'17-08-18');
 
-INSERT INTO Soumission 
-Values(4,30,4,'22-07-19',7600.50,1.24,3);
-
-INSERT INTO Soumission 
-Values(5,40,4,'17-12-18',2600.50,1.45,1);
-
-INSERT INTO Soumission 
-Values(6,40,1,'25-09-19',5600.50,2.01,3);
-
-INSERT INTO Soumission 
-Values(7,4,1,'2019-09-30',5600.50,1.91,1);
-   
+INSERT INTO SoumissionE 
+Values(22,8,'17-08-18');
 
 
 
+INSERT INTO SoumissionE 
+Values(30,3,'05-05-19');
+
+INSERT INTO SoumissionE 
+Values(40,4,'22-07-19');
+
+INSERT INTO SoumissionE 
+Values(50,5,'17-12-18');
 
 
 
+---------------- SOUMISSION D -----------
 
+INSERT INTO SoumissionD 
+Values(1,10,4000.24,1);
+
+INSERT INTO SoumissionD 
+Values(2,20,5670.24,2);
+
+INSERT INTO SoumissionD 
+Values(3,30,3670.24,3);
+
+INSERT INTO SoumissionD 
+Values(4,40,7670.24,4);
+
+INSERT INTO SoumissionD 
+Values(5,50,6670.24,1);
+
+INSERT INTO SoumissionD 
+Values(9,40,66770.24,2);
+
+INSERT INTO SoumissionD 
+Values(12,40,66770.24,3);
 
 
 
