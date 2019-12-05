@@ -54,10 +54,17 @@ Values(10,'Boite de tasses',65.7,-75.9,64.10,-77.13,40,73,150,200,300,1);
 /
 
 
+--Test consulter Soumissions --
+SET ECHO ON
+SET SERVEROUTPUT ON
+execute ConsulterSoumissions;
+/
+
+
 --Test produire facture --
 SET ECHO ON
 SET SERVEROUTPUT ON
-execute produirefacture(13,30,'Master Card');
+execute produirefacture(5,40,'Master Card');
 
 --Test produire facture (Deux fois la meme soumission et client = erreur ) --
 execute produirefacture(14,30,'VISA');
@@ -69,11 +76,45 @@ execute produirefacture(13,30,'Mwdd');
 
 
 
---Test consulter Soumissions --
-SET ECHO ON
-SET SERVEROUTPUT ON
-execute ConsulterSoumissions;
+
+
+
+-- TEST FONCTION DE PLUS LONGUE DISTANCE d'une journee--
+
+SELECT
+     route.NDISTANCE   
+    FROM  chargement,  route , soumissione e
+    WHERE chargement.pchargement = e.pchargement 
+    AND chargement.nlatori = route.nlatori
+    AND chargement.nlongori = route.nlongori
+    AND chargement.nlatdes = route.nlatdes
+    AND chargement.nlongdes = route.nlongdes   
+    and e.datesoumission = '17-08-18';
+    /
+
+select distinct plusLongTrajet('17-08-18') from soumissione;
 /
 
 
+ -- TEST FONCTION Calculer PRIX --
+SET ECHO ON
+SET SERVEROUTPUT ON        
+Select distinct couttotalTrajet(1,65.3,-75.4,44.3,-78.4) FROM soumissiond; -- 40 km * 1.5 + 30.5
+/
 
+SET ECHO ON
+SET SERVEROUTPUT ON 
+SELECT carburant.ncout
+FROM carburant
+NAtural join soumissionD
+natural join camion
+natural join tracteur
+WHere soumissiond.psoumissiond = 1;
+
+
+SELECT ncout
+FROM Typeequipement
+NAtural join soumissionD
+natural join equipement
+natural join camion
+WHere soumissiond.psoumissiond = 1
