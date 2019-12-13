@@ -135,10 +135,10 @@ INSERT INTO ROUTE
 Values(1,'Montreal vers Quebec',65.7,-75.9,64.10,-77.13,22);
 
 INSERT INTO ROUTE
-Values(2,'Montreal vers Sherbrooke',65.3666,-75.444,64.3666,-77.444,30);
+Values(2,'Montreal vers Sherbrooke',25.3666,-35.444,44.3666,-77.444,30);
 
 INSERT INTO ROUTE
-Values(3,'Montreal vers Rimouski',65.3666,-75.444,64.3666,-77.444,45);
+Values(3,'Montreal vers Rimouski',15.3666,-25.444,44.3666,-77.444,45);
 
 INSERT INTO ROUTE
 Values(4,'Montreal vers Plattsburg',65.3666,-75.444,64.3666,-77.444,49);
@@ -166,7 +166,7 @@ INSERT INTO Chargement
 Values(2,'Boite de livre',65.3,-75.4,44.3,-78.4,20,50,250,100,300,1);
 
 INSERT INTO Chargement
-Values(3,'Boite de tuque',65.3,-75.4,44.3,-78.4,20,33,200,200,300,1);
+Values(3,'Boite de tuque',65.3666,-75.444,64.3666,-77.444,20,33,200,200,300,1);
 
 INSERT INTO Chargement
 Values(4,'Boite de chapeau',65.3,-75.4,44.3,-78.4,30,33,100,200,300,1);
@@ -192,7 +192,7 @@ INSERT INTO SoumissionE
 Values(20,4,'17-08-18');
 
 INSERT INTO SoumissionE 
-Values(21,1,'17-08-18');
+Values(21,3,'17-08-18');
 
 INSERT INTO SoumissionE 
 Values(22,8,'17-08-18');
@@ -206,7 +206,7 @@ INSERT INTO SoumissionE
 Values(40,4,'22-07-19');
 
 INSERT INTO SoumissionE 
-Values(50,5,'17-12-18');
+Values(44,5,'17-08-18');
 
 
 
@@ -224,14 +224,21 @@ Values(3,30,3670.24,3);
 INSERT INTO SoumissionD 
 Values(4,40,7670.24,4);
 
-INSERT INTO SoumissionD 
-Values(5,50,6670.24,1);
 
 INSERT INTO SoumissionD 
 Values(9,40,66770.24,2);
 
 INSERT INTO SoumissionD 
 Values(12,40,66770.24,3);
+
+INSERT INTO SoumissionD 
+Values(13,21,46770.24,3);
+
+INSERT INTO SoumissionD 
+Values(14,22,46770.24,4);
+
+INSERT INTO SoumissionD 
+Values(15,44,46770.24,2);
 
 
 

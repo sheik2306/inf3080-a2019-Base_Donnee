@@ -4,11 +4,11 @@ CREATE OR REPLACE FUNCTION plusLongTrajet(date_ in varchar)
 return number
 is
 n_distance ROUTE.ndistance%TYPE;
-tmp ROUTE.ndistance%TYPE;
-
+soumissionNb soumissione.psoumissione%TYPE;
+camionId Camion.camion_id%TYPE;
 cursor Distances
 is SELECT
-     route.NDISTANCE 
+     route.NDISTANCE, e.psoumissione 
     
     FROM  chargement,  route , soumissione e
     WHERE chargement.pchargement = e.pchargement 
@@ -24,18 +24,24 @@ LOOP
     if(uneDistance.ndistance > n_distance)
     THEN
     n_distance:= uneDistance.ndistance;
+    soumissionNb:= Unedistance.psoumissione;
 END IF;
 END LOOP;
 
-return(n_distance);
+    SELECT
+        Soumissiond.camion_id INTO camionId
+        FROM  soumissione, soumissiond
+        WHERE
+            soumissiond.psoumissione=soumissione.psoumissione
+            AND
+            soumissione.psoumissione = soumissionNb;
 
+    
+    return(camionId);
+
+  
 end plusLongtrajet;
 /
-
-
-
-
-
 
 
 
@@ -54,12 +60,14 @@ prixTotal  Number(8,2);
 n_distance route.ndistance%TYPE;
 n_cout Carburant.nCout%Type;
 n_coutE TypeEquipement.ncout%type;
+coutPoids Chargement.poids%TYPE;
+coutDimension number(8,2);
 
 BEGIN 
 
 SELECT 
-route.ndistance, Carburant.ncout, TypeEquipement.ncout
-into n_distance ,n_cout, n_coutE
+route.ndistance, Carburant.ncout, TypeEquipement.ncout, chargement.poids, (chargement.longueur + chargement.hauteur + chargement.largeur)
+into n_distance ,n_cout, n_coutE, coutPoids,coutDimension
  FROM    Chargement, route ,
  soumissione , soumissiond , Camion, Tracteur, carburant, equipement,TypeEquipement
 
@@ -80,11 +88,12 @@ into n_distance ,n_cout, n_coutE
  dbms_output.put_line( 'Cout de carburant' ||  n_cout);
  dbms_output.put_line( 'Cout dequipement' ||  n_coutE);
 
-prixTotal:=(n_distance*n_cout) + n_coutE; --Cout carburant * Distance
+prixTotal:=(((n_distance*n_cout) + n_coutE) * coutPoids + coutDimension) * 1.1; --Cout carburant * Distance
 
 return (prixTotal);
 END coutTotalTrajet;
 /
+
 
 SET ECHO ON
 SET SERVEROUTPUT ON
@@ -103,11 +112,11 @@ FROM
 WHERE
     FACTURE.nofacture = no_facture;
     
+dbms_output.put_line('Total '|| prixTotal || '$');    
     return(prixTotal);
 
 end totalFacture;
 /
 
-select distinct totalFacture(2) from facture;
-/
+
 

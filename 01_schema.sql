@@ -21,6 +21,7 @@ CONSTRAINT pk_Route PRIMARY KEY (pRoute)
 );/
 
 
+
 CREATE TABLE Tracteur (
 pTracteur number (3) NOT NULL,
 pCarburant NUMBER(3) NOT NULL,

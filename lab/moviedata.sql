@@ -33,7 +33,6 @@ rID integer,
 mID integer, 
 stars integer NOT NULL check (stars in (1,2,3,4,5)), 
 ratingDate date CHECK ( ratingDate >= TO_DATE('01-01-2000','dd-mm-yyyy')),
-
 CONSTRAINT pk_rating UNIQUE (rID,mID,ratingDate)
 
 );/

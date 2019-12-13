@@ -1,7 +1,6 @@
 SET ECHO ON
 SET SERVEROUTPUT ON
 CREATE OR REPLACE procedure ConsulterSoumissions 
-
 IS
   CURSOR soumission
   IS
@@ -14,7 +13,6 @@ IS
     AND e.pchargement = t.pchargement 
     AND t.pclient = c.pclient;
 BEGIN
-
   FOR eachSoum IN soumission
   LOOP
     dbms_output.put_line( 'Numero de soumission Detail ' ||  eachSoum.psoumissiond);
@@ -42,8 +40,6 @@ TVQ NUMBER(8,2);
 TOTAL NUMBER(8,2);
 prix soumissiond.nprix%TYPE;
 type_Paiement varchar(30);
-
-
 BEGIN
 
 SELECT c.pclient,d.psoumissiond,c.telephone,(d.nprix*0.05),d.nprix*0.10,d.nprix
@@ -56,8 +52,8 @@ AND e.pchargement = t.pchargement
 AND t.pclient = c.pclient;
 
 type_Paiement:=typePaiement;
-
 TOTAL:= TPS + TVQ + prix;
+
 dbms_output.put_line('No Client '|| nClient);
 dbms_output.put_line('No SoumissionD '|| dSoumission);
 dbms_output.put_line('No telephone '|| nTelephone);
@@ -69,10 +65,9 @@ dbms_output.put_line('Mode de paiement '|| type_Paiement);
 
 
 
+
 INSERT INTO FACTURE 
 Values(no_facture.nextval,nClient,dSoumission,nTelephone,TPS,TVQ,prix,TOTAL,type_Paiement);
-
-
 END;
 /
 

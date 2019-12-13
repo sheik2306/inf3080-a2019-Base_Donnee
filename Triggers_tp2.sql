@@ -3,27 +3,18 @@ SET ECHO ON
 
 create or replace TRIGGER  nombreCamion
 AFTER INSERT ON SoumissionD
-
 DECLARE
-
 nbCamion compagnie.nnombrecamion%TYPE;
-
 BEGIN
     SELECT nNombreCamion INTO nbCamion
-    FROM compagnie;
-    
+    FROM compagnie;  
 dbms_output.put_line
 ('Ancienne Quantite de camion ' || nbCamion);
-
 UPDATE Compagnie SET nNombreCamion = nNombreCamion - 1;
-
   SELECT nNombreCamion INTO nbCamion
-  FROM compagnie;
-    
+  FROM compagnie;  
 dbms_output.put_line
 ('Nouvelle Quantite de camion ' || nbCamion);
-
-
 END;
 /
 
@@ -46,9 +37,10 @@ BEGIN
     THEN
       raise_application_error(-20000
                 , 'Distance ne peux pas etre en haut de 50km.');
-                END IF;
-                dbms_output.put_line
+               END IF;
+                     dbms_output.put_line
 ('La distance etait en bas de 50km avec une distance de ' || nbDistance);
+             
 END;
 /
 
@@ -97,7 +89,10 @@ END;
         WHERE CTYPEEQUIPEMENT = 'Flatbed';
         
     if(nCoutType1 = nCoutType2)
+    
     THEN
+    dbms_output.put_line
+    ('Les couts sont egaux avec des valeurs de ' || nCoutType1 || ' et ' || nCoutType2);
          raise_application_error(-20000
     , 'Les couts dequipement sont les memes');
     END IF;

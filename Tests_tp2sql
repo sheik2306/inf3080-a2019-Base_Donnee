@@ -1,7 +1,8 @@
 
 
 --- TEST TYPE EQUIPEMENT ET TRIGGER 'COUT'  / Nombre de camion --
-
+SET ECHO ON
+SET SERVEROUTPUT ON
 UPDATE TYPEEQUIPEMENT
 SET TYPEEQUIPEMENT.ncout = 50.5
 WHERE TYPEEQUIPEMENT.CTYPEEQUIPEMENT = 'Flatbed';
@@ -11,14 +12,22 @@ SET TYPEEQUIPEMENT.ncout = 50.5
 WHERE TYPEEQUIPEMENT.CTYPEEQUIPEMENT = 'Drybox';
 
 INSERT INTO SoumissionD 
-Values(16,40,66770.24); -- ERREUR--
+Values(16,40,66770.24,1); -- ERREUR--
 
 UPDATE TYPEEQUIPEMENT
 SET TYPEEQUIPEMENT.ncout = 60.5
 WHERE TYPEEQUIPEMENT.CTYPEEQUIPEMENT = 'Drybox';
 
+SET ECHO ON
+SET SERVEROUTPUT ON
 INSERT INTO SoumissionD 
-Values(16,40,66770.24); --INSERT-- Nombre de camion -1
+Values(19,40,66770.24,1); --INSERT-- Nombre de camion -1
+
+
+INSERT INTO TYPEEQUIPEMENT 
+VALUES(2,'Flatmatelas',40.50);   -- Unique
+
+
 
 
 
@@ -33,10 +42,10 @@ Values(7,'Boite de tasses',65.7,-75.9,64.10,-77.13,40,73,150,200,300,1);
 -- EN HAUT DE 50KM = ERREUR --
 
 INSERT INTO ROUTE
-Values(11,'Quebec vers Kingston',67.3,-88.4,49.3,-88.4,400); -- 400 km --
+Values(14,'Quebec vers Kingston',67.3,-88.4,49.3,-88.4,400); -- 400 km --
 
 INSERT INTO Chargement
-Values(10,'Boite de tasses',67.3,-88.4,49.3,-88.4,40,73,150,200,300,1); -- Meme coordonee que la route 11 -- ( 400km)
+Values(15,'Boite de tasses',67.3,-88.4,49.3,-88.4,40,73,150,200,300,1); -- Meme coordonee que la route 11 -- ( 400km)
 
 
 
@@ -61,45 +70,63 @@ execute ConsulterSoumissions;
 /
 
 
---Test produire facture --
+--Test produire facture (soumissiond, client ,paiement)
 SET ECHO ON
 SET SERVEROUTPUT ON
-execute produirefacture(5,40,'Master Card');
+execute produirefacture(12,30,'Master Card');
 
 --Test produire facture (Deux fois la meme soumission et client = erreur ) --
-execute produirefacture(14,30,'VISA');
+execute produirefacture(12,30,'VISA');
 
---Test produire mauvais paiement --
+--Test produire mauvais paiement ( check 'Master Card' ) --
 SET ECHO ON
 SET SERVEROUTPUT ON
-execute produirefacture(13,30,'Mwdd');
+execute produirefacture(15,40,'Mwdd');
 
 
 
 
+
+--Test afficher facture --
+    select *
+    from Facture;
+
+SET ECHO ON
+SET SERVEROUTPUT ON
+select distinct totalFacture(2) from facture;
+/
 
 
 -- TEST FONCTION DE PLUS LONGUE DISTANCE d'une journee--
 
 SELECT
-     route.NDISTANCE   
-    FROM  chargement,  route , soumissione e
+     route.NDISTANCE, e.psoumissione ,soumissiond.camion_id, e.datesoumission
+    FROM  chargement,  route , soumissione e, soumissiond
     WHERE chargement.pchargement = e.pchargement 
     AND chargement.nlatori = route.nlatori
     AND chargement.nlongori = route.nlongori
     AND chargement.nlatdes = route.nlatdes
     AND chargement.nlongdes = route.nlongdes   
-    and e.datesoumission = '17-08-18';
+    and e.datesoumission = '17-08-18'
+    and soumissiond.psoumissione = e.psoumissione;
     /
-
-select distinct plusLongTrajet('17-08-18') from soumissione;
+    
+SET ECHO ON
+SET SERVEROUTPUT ON 
+select distinct plusLongTrajet('17-08-18')
+from soumissione
+;
 /
 
 
- -- TEST FONCTION Calculer PRIX --
+ -- TEST FONCTION Calculer PRIX (noSoumission soumissiond.psoumissiond%TYPE, 
+ -- n_latOri in chargement.nlatori%TYPE, n_longOri in chargement.nlongori%TYPE, 
+ --n_latDes in chargement.nlatDes%TYPE, n_longDes in chargement.nlongDes%TYPE) --
 SET ECHO ON
 SET SERVEROUTPUT ON        
-Select distinct couttotalTrajet(1,65.3,-75.4,44.3,-78.4) FROM soumissiond; -- 40 km * 1.5 + 30.5
+
+Select distinct couttotalTrajet(1,65.3,-75.4,44.3,-78.4) FROM soumissiond;
+-- (40 km * 1.5(L) + 50.5(Type) * poids (50) + ( 250(Lg) + 100(L) + 300(H))
 /
 
 SET ECHO ON
@@ -111,10 +138,27 @@ natural join camion
 natural join tracteur
 WHere soumissiond.psoumissiond = 1;
 
+select *
+from route
+where
+nlatori =65.3
+and nlongori=-75.4
+and nlatdes = 44.3
+and nlongdes = -78.4;
 
-SELECT ncout
+
+SELECT *
 FROM Typeequipement
 NAtural join soumissionD
 natural join equipement
 natural join camion
-WHere soumissiond.psoumissiond = 1
+WHere soumissiond.psoumissiond = 1;/
+
+
+SELECT *
+FROM chargement,soumissione e , soumissiond d
+WHERE
+    d.psoumissiond = 1
+    AND e.psoumissione = d.psoumissione
+    AND chargement.pchargement = e.pchargement;
+
